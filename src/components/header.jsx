@@ -15,7 +15,7 @@ import { LinkIcon, LogOut } from "lucide-react";
 
 const header = () => {
     const navigate = useNavigate();
-    const user = true;
+    const user = false;
 
     return (
         <nav className="flex justify-between items-center">
