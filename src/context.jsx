@@ -1,10 +1,10 @@
-import { Children, createContext, useContext, useEffect } from "react";
-import useFetch from "./hooks/use-fatch";
+import { createContext, useContext, useEffect } from "react";
+import useFetch from "./hooks/use-fetch";
 import { getCurrentUser } from "./db/apiAuth";
 
 const UrlContext = createContext();
 
-const UrlProvider = ({ Children }) => {
+const UrlProvider = ({ children }) => {
     const { data: user, loading, fn: fetchuser } = useFetch(getCurrentUser);
 
     const isAuthenticated = user?.role === "authenticated";
@@ -17,7 +17,7 @@ const UrlProvider = ({ Children }) => {
         <UrlContext.Provider
             value={{ user, fetchuser, loading, isAuthenticated }}
         >
-            {Children}
+            {children}
         </UrlContext.Provider>
     );
 };
