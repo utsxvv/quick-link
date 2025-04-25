@@ -1,8 +1,23 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Copy, Delete, Download } from "lucide-react";
+import { Copy, Download, Trash } from "lucide-react";
 
-const LinkCard = ({ url, clicks }) => {
+const LinkCard = ({ url, fetchUrls }) => {
+    const downloadImage = () => {
+        const imageUrl = url?.qr;
+        const filename = url?.title;
+
+        const anchor = document.createElement("a");
+        anchor.href = imageUrl;
+        anchor.download = filename;
+
+        document.body.appendChild(anchor);
+
+        anchor.click();
+
+        document.body.removeChild(anchor);
+    };
+
     return (
         <div className="flex flex-col md:flex-row gap-5 border p-4 bg-gray-900 rounded-lg">
             <img
@@ -37,11 +52,11 @@ const LinkCard = ({ url, clicks }) => {
                 >
                     <Copy />
                 </Button>
-                <Button variant="ghost">
+                <Button variant="ghost" onClick={downloadImage}>
                     <Download />
                 </Button>
                 <Button variant="ghost">
-                    <Delete />
+                    <Trash />
                 </Button>
             </div>
         </div>
