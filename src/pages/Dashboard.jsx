@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import Error from "@/components/Error";
 import LinkCard from "@/components/link-card";
 import { Button } from "@/components/ui/button";
