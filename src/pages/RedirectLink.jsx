@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { getLongUrl, storeClicks } from "@/db/apiUrls";
+import { storeClicks } from "@/db/apiClicks";
+import { getLongUrl } from "@/db/apiUrls";
 import useFetch from "@/hooks/use-fetch";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
