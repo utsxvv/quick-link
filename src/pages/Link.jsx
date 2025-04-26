@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
+import Device from "@/components/device-stats";
+import Location from "@/components/location-stats";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -143,7 +145,9 @@ const Link = () => {
                             </Card>
 
                             <CardTitle>Location Data</CardTitle>
+                            <Location stats={stats} />
                             <CardTitle>Device Info</CardTitle>
+                            <Device stats={stats} />
                         </CardContent>
                     ) : (
                         <CardContent>
