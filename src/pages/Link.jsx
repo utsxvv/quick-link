@@ -76,7 +76,7 @@ const Link = () => {
             {(loading || loadingStats) && (
                 <BarLoader className="mb-4" width={"100%"} color="white" />
             )}
-            <div className="flex flex-col gap-8 sm:flex-row justify-between mt-16">
+            <div className="flex flex-col gap-8 sm:flex-row justify-between mt-8">
                 <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
                     <span className="text-6xl font-extrabold hover:underline cursor-pointer">
                         {url?.title}

@@ -11,7 +11,16 @@ const AppLayout = () => {
             </main>
 
             <div className="p-10 text-center bg-card mt-10">
-                Made with ❤️ by Utsav
+                <p>Made with ❤️ by Utsav</p>
+                <p className="mt-3">
+                    For queries or feedback, reach out at:{" "}
+                    <a
+                        href="mailto:utssavvpatel@gmail.com"
+                        className="text-blue-500"
+                    >
+                        utssavvpatel@gmail.com
+                    </a>
+                </p>
             </div>
         </div>
     );
