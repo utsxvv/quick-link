@@ -8,8 +8,8 @@ export async function getClicksForUrls(urlIds) {
         .in("url_id", urlIds);
 
     if (error) {
-        console.error(error.message);
-        throw new Error("Unable to load Clicks");
+        console.error("Error fetching clicks:", error);
+        return null;
     }
 
     return data;

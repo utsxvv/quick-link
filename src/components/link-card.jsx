@@ -6,6 +6,7 @@ import { deleteUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
 const LinkCard = ({ url, fetchUrls }) => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const downloadImage = () => {
         const imageUrl = url?.qr;
         const filename = url?.title;
@@ -27,10 +28,10 @@ const LinkCard = ({ url, fetchUrls }) => {
     );
 
     return (
-        <div className="flex flex-col md:flex-row gap-5 border p-4 bg-gray-900 rounded-lg">
+        <div className="flex flex-col md:flex-row gap-5 border p-4 bg-card rounded-lg">
             <img
                 src={url?.qr}
-                className="h-32 object-contain ring ring-blue-500 self-start"
+                className="h-32 object-contain ring self-start"
                 alt="qr code"
             />
             <Link to={`/link/${url?.id}`} className="flex flex-col flex-1">
@@ -38,7 +39,7 @@ const LinkCard = ({ url, fetchUrls }) => {
                     {url?.title}
                 </span>
                 <span className="text-2xl text-blue-400 font-bold hover:underline cursor-pointer">
-                    https://quicklink.in/
+                    {BASE_URL}/
                     {url?.custom_url ? url?.custom_url : url.short_url}
                 </span>
                 <span className="flex items-center gap-1 hover:underline cursor-pointer">
@@ -54,7 +55,7 @@ const LinkCard = ({ url, fetchUrls }) => {
                     variant="ghost"
                     onClick={() =>
                         navigator.clipboard.writeText(
-                            `https://quicklink.in/${url?.short_url}`
+                            `${BASE_URL}/${url?.short_url}`
                         )
                     }
                 >

@@ -21,6 +21,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BarLoader, BeatLoader } from "react-spinners";
 
 const Link = () => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+
     const downloadImage = () => {
         const imageUrl = url?.qr;
         const filename = url?.title;
@@ -72,7 +74,7 @@ const Link = () => {
     return (
         <>
             {(loading || loadingStats) && (
-                <BarLoader className="mb-4" width={"100%"} color="#1E2939" />
+                <BarLoader className="mb-4" width={"100%"} color="white" />
             )}
             <div className="flex flex-col gap-8 sm:flex-row justify-between mt-16">
                 <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
@@ -80,11 +82,11 @@ const Link = () => {
                         {url?.title}
                     </span>
                     <a
-                        href={`https://quicklink.in/${link}`}
+                        href={`${BASE_URL}/${link}`}
                         target="_blank"
                         className="text-3xl sm:text-4xl text-blue-500 font-bold hover:underline cursor-pointer"
                     >
-                        https://quicklink.in/{link}
+                        {BASE_URL}/{link}
                     </a>
                     <a
                         href={url?.original_url}
@@ -103,7 +105,7 @@ const Link = () => {
                             variant="ghost"
                             onClick={() =>
                                 navigator.clipboard.writeText(
-                                    `https://quicklink.in/${url?.short_url}`
+                                    `${BASE_URL}/${url?.short_url}`
                                 )
                             }
                         >
@@ -122,7 +124,7 @@ const Link = () => {
                     </div>
                     <img
                         src={url?.qr}
-                        className="w-full self-center sm:self-start ring ring-blue-500 p-1 object-contain"
+                        className="w-full self-center sm:self-start ring ring-white p-1 object-contain"
                         alt="qr code"
                     />
                 </div>

@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import { UrlState } from "@/context";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -36,11 +35,11 @@ const CreateLink = () => {
     });
 
     const schema = yup.object().shape({
-        title: yup.string().required("Title is required"),
+        title: yup.string().required("Oops! Title is missing."),
         longUrl: yup
             .string()
-            .url("Must be a valid URL")
-            .required("Long URL is required"),
+            .url("Invalid URL format.")
+            .required("The long URL cannot be blank."),
         customUrl: yup.string(),
     });
 
@@ -93,20 +92,30 @@ const CreateLink = () => {
             }}
         >
             <DialogTrigger>
-                <Button variant="destructive">Create New Link</Button>
+                <Button>Add New Link</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Create New</DialogTitle>
+                    <DialogTitle>Add New</DialogTitle>
                 </DialogHeader>
 
                 {formValues?.longUrl && (
-                    <QRCode value={formValues?.longUrl} size={250} ref={ref} />
+                    <QRCode
+                        value={formValues?.longUrl}
+                        size={250}
+                        ref={ref}
+                        logoImage="/qr-image.png"
+                        logoWidth={100}
+                        logoHeight={100}
+                        fgColor="#000000"
+                        bgColor="#ffffff"
+                        removeQrCodeBehindLogo={true}
+                    />
                 )}
 
                 <Input
                     id="title"
-                    placeholder="Short Link's Title"
+                    placeholder="Link Title"
                     value={formValues.title}
                     onChange={handleChange}
                 />
@@ -114,7 +123,7 @@ const CreateLink = () => {
 
                 <Input
                     id="longUrl"
-                    placeholder="Enter your Long URL"
+                    placeholder="Long URL Here"
                     value={formValues.longUrl}
                     onChange={handleChange}
                 />
@@ -132,11 +141,7 @@ const CreateLink = () => {
                 {error && <Error message={error.message} />}
 
                 <DialogFooter className="sm:justify-start">
-                    <Button
-                        disabled={loading}
-                        onClick={createNewLink}
-                        variant="destructive"
-                    >
+                    <Button disabled={loading} onClick={createNewLink}>
                         {loading ? (
                             <BeatLoader size={10} color="white" />
                         ) : (

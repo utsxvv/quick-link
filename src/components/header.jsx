@@ -35,7 +35,7 @@ const header = () => {
                     />
                 </Link>
 
-                <div>
+                <div className="flex gap-4">
                     {!user ? (
                         <Button onClick={() => navigate("/auth")}>Login</Button>
                     ) : (
@@ -46,7 +46,7 @@ const header = () => {
                                         src={user?.user_metadata?.profile_pic}
                                         className="object-contain"
                                     />
-                                    <AvatarFallback>UP</AvatarFallback>
+                                    <AvatarFallback>QL</AvatarFallback>
                                 </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
@@ -57,21 +57,20 @@ const header = () => {
                                 <DropdownMenuItem>
                                     <Link to="/dashboard" className="flex">
                                         <LinkIcon className="mr-2 h-4 w-4" />
-                                        My Links
+                                        <span className="pl-2">My Links</span>
                                     </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-red-400">
+                                <DropdownMenuItem
+                                    onClick={() => {
+                                        fnLogout().then(() => {
+                                            fetchUser();
+                                            navigate("/auth");
+                                        });
+                                    }}
+                                    className="text-red-400"
+                                >
                                     <LogOut className="mr-2 h-4 w-4 text-red-400" />
-                                    <span
-                                        onClick={() => {
-                                            fnLogout().then(() => {
-                                                fetchUser();
-                                                navigate("/");
-                                            });
-                                        }}
-                                    >
-                                        Logout
-                                    </span>
+                                    <span>Logout</span>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -79,7 +78,7 @@ const header = () => {
                 </div>
             </nav>
             {loading && (
-                <BarLoader className="mb-4" width={"100%"} color="#1E2939" />
+                <BarLoader className="mb-4" width={"100%"} color="white" />
             )}
         </>
     );

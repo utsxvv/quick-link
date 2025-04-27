@@ -35,7 +35,7 @@ const LandingPage = () => {
                     onChange={(e) => setLongUrl(e.target.value)}
                     className="h-full flex-1 py-4 px-4"
                 />
-                <Button className="h-full" type="submit" variant="destructive">
+                <Button className="h-full" type="submit">
                     Shorten!
                 </Button>
             </form>

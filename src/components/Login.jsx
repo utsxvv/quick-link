@@ -18,16 +18,17 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { UrlState } from "@/context";
 
 const Login = () => {
+    let [searchParams] = useSearchParams();
+    const longLink = searchParams.get("createNew");
+
+    const navigate = useNavigate();
+
     const [errors, setErrors] = useState({});
 
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
-
-    const navigate = useNavigate();
-    let [searchParams] = useSearchParams();
-    const longLink = searchParams.get("createNew");
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -45,18 +46,18 @@ const Login = () => {
             navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
             fetchUser();
         }
-    }, [data, error]);
+    }, [error, data]);
 
     const handleLogin = async () => {
         setErrors([]);
         try {
             const schema = Yup.object().shape({
                 email: Yup.string()
-                    .email("Invalid email")
-                    .required("Email is required"),
+                    .email("Oops! Please enter a correct email.")
+                    .required("Please enter your email address."),
                 password: Yup.string()
                     .min(6, "Password must be at least 6 characters")
-                    .required("Password is required"),
+                    .required("Password must be 6 characters or longer."),
             });
 
             await schema.validate(formData, { abortEarly: false });
@@ -102,11 +103,7 @@ const Login = () => {
             </CardContent>
             <CardFooter>
                 <Button onClick={handleLogin}>
-                    {loading ? (
-                        <BeatLoader size={10} color="#1E2939" />
-                    ) : (
-                        "Login"
-                    )}
+                    {loading ? <BeatLoader size={10} color="white" /> : "Login"}
                 </Button>
             </CardFooter>
         </Card>

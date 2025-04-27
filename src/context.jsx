@@ -5,17 +5,17 @@ import { getCurrentUser } from "./db/apiAuth";
 const UrlContext = createContext();
 
 const UrlProvider = ({ children }) => {
-    const { data: user, loading, fn: fetchuser } = useFetch(getCurrentUser);
+    const { data: user, loading, fn: fetchUser } = useFetch(getCurrentUser);
 
     const isAuthenticated = user?.role === "authenticated";
 
     useEffect(() => {
-        fetchuser();
+        fetchUser();
     }, []);
 
     return (
         <UrlContext.Provider
-            value={{ user, fetchuser, loading, isAuthenticated }}
+            value={{ user, fetchUser, loading, isAuthenticated }}
         >
             {children}
         </UrlContext.Provider>

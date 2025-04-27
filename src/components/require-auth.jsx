@@ -13,7 +13,7 @@ function RequireAuth({ children }) {
         if (!isAuthenticated && loading === false) navigate("/auth");
     }, [isAuthenticated, loading]);
 
-    if (loading) return <BarLoader width={"100%"} color="#1E2939" />;
+    if (loading) return <BarLoader width={"100%"} color="white" />;
 
     if (isAuthenticated) return children;
 }

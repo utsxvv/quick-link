@@ -29,7 +29,7 @@ const RedirectLink = () => {
     if (loading || loadingStats) {
         return (
             <>
-                <BarLoader width={"100%"} color="#1E2939" />
+                <BarLoader width={"100%"} color="white" />
                 <br />
                 Redirecting...
             </>

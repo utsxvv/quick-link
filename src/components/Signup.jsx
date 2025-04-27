@@ -40,12 +40,10 @@ const Signup = () => {
     };
 
     const { data, error, loading, fn: fnSignup } = useFetch(signup, formData);
-    const { fetchUser } = UrlState();
 
     useEffect(() => {
         if (error === null && data) {
             navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
-            fetchUser();
         }
     }, [error, loading]);
 
@@ -53,15 +51,15 @@ const Signup = () => {
         setErrors([]);
         try {
             const schema = Yup.object().shape({
-                name: Yup.string().required("Name is required"),
+                name: Yup.string().required("Please enter your name."),
                 email: Yup.string()
-                    .email("Invalid email")
-                    .required("Email is required"),
+                    .email("Oops! Please enter a correct email.")
+                    .required("Please enter your email address."),
                 password: Yup.string()
-                    .min(6, "Password must be at least 6 characters")
-                    .required("Password is required"),
+                    .min(6, "Password must be 6 characters or longer.")
+                    .required("Please enter your password."),
                 profile_pic: Yup.mixed().required(
-                    "Profile picture is required"
+                    "Please upload a profile picture."
                 ),
             });
 
@@ -71,11 +69,15 @@ const Signup = () => {
         } catch (e) {
             const newErrors = {};
 
-            e?.inner?.forEach((err) => {
-                newErrors[err.path] = err.message;
-            });
+            if (e?.inner) {
+                e?.inner?.forEach((err) => {
+                    newErrors[err.path] = err.message;
+                });
 
-            setErrors(newErrors);
+                setErrors(newErrors);
+            } else {
+                setErrors({ api: e.message });
+            }
         }
     };
 
@@ -93,7 +95,7 @@ const Signup = () => {
                     <Input
                         name="name"
                         type="text"
-                        placeholder="Enter Name"
+                        placeholder="Enter Your Name"
                         onChange={handleInputChange}
                     />
                     {errors.name && <Error message={errors.name} />}
@@ -116,22 +118,30 @@ const Signup = () => {
                     />
                     {errors.password && <Error message={errors.password} />}
                 </div>
-                <div className="space-y-1">
+                <div className="flex items-center space-x-3">
                     <Input
+                        id="profile_pic"
                         name="profile_pic"
                         type="file"
                         accept="image/*"
                         onChange={handleInputChange}
+                        className="border-gray-300 text-white"
                     />
                     {errors.profile_pic && (
                         <Error message={errors.profile_pic} />
                     )}
+                    <label
+                        htmlFor="profile_pic"
+                        className="text-sm text-muted-foreground inline-flex items-center"
+                    >
+                        Profile Picture
+                    </label>
                 </div>
             </CardContent>
             <CardFooter>
                 <Button onClick={handleSignup}>
                     {loading ? (
-                        <BeatLoader size={10} color="#1E2939" />
+                        <BeatLoader size={10} color="white" />
                     ) : (
                         "Create Account"
                     )}

@@ -24,6 +24,7 @@ const Dashboard = () => {
         data: urls,
         fn: fnUrls,
     } = useFetch(getUrls, user?.id);
+
     const {
         loading: loadingClicks,
         data: clicks,
@@ -50,7 +51,7 @@ const Dashboard = () => {
     return (
         <div className="flex flex-col gap-8">
             {(loading || loadingClicks) && (
-                <BarLoader width={"100%"} color="#1E2939" />
+                <BarLoader width={"100%"} color="white" />
             )}
             <div className="grid grid-cols-2 gap-4">
                 <Card>
