@@ -6,7 +6,7 @@ import Auth from "./pages/Auth";
 import Link from "./pages/Link";
 import RedirectLink from "./pages/RedirectLink";
 import UrlProvider from "./context";
-import RequireAuth from "./components/Require-auth";
+import RequireAuth from "./components/require-auth";
 
 const router = createBrowserRouter([
     {
