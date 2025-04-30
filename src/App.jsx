@@ -7,6 +7,8 @@ import Link from "./pages/Link";
 import RedirectLink from "./pages/RedirectLink";
 import UrlProvider from "./context";
 import RequireAuth from "./components/require-auth";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const router = createBrowserRouter([
     {
