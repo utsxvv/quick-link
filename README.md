@@ -1,12 +1,56 @@
-# React + Vite
+<p align="center">
+  <img src="./public/logo.png" width="250" alt="Quick Link Logo" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 About
 
-Currently, two official plugins are available:
+**Quick Link** is a modern, fast, and user-friendly URL shortener that lets you:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Create short URLs from long ones
+-   Customize your short links
+-   Instantly generate and download QR codes
+-   Track click analytics including device type and city-level location
 
-## Expanding the ESLint configuration
+No fluff — just clean, efficient link sharing with real-time insights.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Tech Stack
+
+-   **Frontend**: React, Tailwind CSS, ShadCN (Radix UI components)
+-   **Backend**: Supabase (Database & Auth)
+-   **Routing**: React Router
+-   **QR Code**: React QRCode Logo
+-   **Analytics**: Recharts + UA-Parser-JS
+
+## ✨ Features
+
+-   🔗 Custom and random URL shortening
+-   📱 QR code generation for every link
+-   📊 Click tracking with device and location data
+-   📈 Interactive charts for stats visualization
+-   🧼 Clean, responsive UI using ShadCN components
+-   📋 One-click copy to clipboard
+
+## 🌐 Live Website
+
+Check out the live version of **Quick Link** here:  
+[Quick Link Live](https://quick-link-black.vercel.app/)
+
+Say more with lessEvery click counts
+
+## 🖼️ Preview
+
+<p align="center">
+  <img src="./public/landing-page.png" alt="Quick Link Logo" />
+</p>
+
+## 📬 Connect
+
+For questions or support, contact:
+
+-   **Gmail**: [utssavvpatel@gmail.com](mailto:utssavvpatel@gmail.com)
+-   **LinkedIn**: [Utsav Patel](https://www.linkedin.com/in/utsxvv)
+-   **GitHub**: [@utsxvv](https://github.com/utsxvv)
+
+<p align="center">
+  Made with ❤️ by UTSAV
+</p>
