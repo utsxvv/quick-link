@@ -11,7 +11,7 @@ const AppLayout = () => {
             </main>
 
             <div className="p-10 text-center bg-card mt-10">
-                <p>Made with ❤️ by Utsav</p>
+                <p>Made with ❤️ by UTSAV</p>
                 <p className="mt-3">
                     For queries or feedback, reach out at:{" "}
                     <a
